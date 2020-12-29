@@ -62,10 +62,10 @@
 						<div class="col-lg-2 col-md-5 mb-4">
 							<div class="webcard">
 								<!-- 클릭하면 상세페이지이동 -->
-								<img class="webImg" src="${vo.toon_pic }" onclick="location='/MiniPj/DetailController.do?toon_no=${vo.toon_no}'">
+								<img class="webImg" src="${vo.toon_pic }" onclick="location='/MiniPj/ReviewList.do?toon_no=${vo.toon_no}'">
 								<div class="webbody">
 									<h4 class="title">
-										<a href="/MiniPj/DetailController.do?toon_no=${vo.toon_no}">${vo.toon_name }</a>
+										<a href="/MiniPj/ReviewList.do?toon_no=${vo.toon_no}">${vo.toon_name }</a>
 									</h4>
 									<h5 class="writer">${vo.toon_writer }
 									<c:if test="${vo.toon_site == '네이버' }">
