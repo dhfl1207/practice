@@ -1,11 +1,13 @@
 package com.dbal.app.seleniumcrawling;
 
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;import org.jsoup.nodes.Element;
+import java.util.List;
+import java.util.ListIterator;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class SeleniumTest {
 	
@@ -19,20 +21,28 @@ public class SeleniumTest {
 	
 	public static void main(String[] args) {
 		
+		//WebDriver 경로 설정
 		System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
-		driver = new ChromeDriver();
 		
-		try {
-			driver.get("https://www.10000recipe.com/recipe/list.html?q=%EC%B1%84%EC%8B%9D");
-			Thread.sleep(2000);
-			WebElement urlElement = driver.findElement(By.xpath("#contents_area_full > ul > ul > li:nth-child(1) > div.common_sp_thumb > a"));
-//			System.out.println(driver.getPageSource());			
-			System.out.println(urlElement);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			
-		}
+		//WebDriver 옵션 설정
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--start-maximized"); //전체 화면으로 실행
+		options.addArguments("--disable-popup-blocking"); //팝업 무시
+		options.addArguments("--disable-default-apps"); //기본앱 사용 안함
+		
+		//WebDriver 객체 생성
+		ChromeDriver driver = new ChromeDriver(options);
+		
+		driver.get("https://www.10000recipe.com/recipe/list.html?q=%EC%B1%84%EC%8B%9D");
+		
+		List<WebElement> urlElements = driver.findElements(By.cssSelector(".common_sp_thumb"));
+		
+		System.out.println(urlElements.size());
+		
+		for(int i = 1; i <= 40; i++) {
+			ListIterator<WebElement> url = urlElements.listIterator();
+			System.out.println(url);
+			}
 		
 	}
 	
