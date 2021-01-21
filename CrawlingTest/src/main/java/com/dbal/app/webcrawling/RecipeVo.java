@@ -6,18 +6,13 @@ import lombok.Data;
 
 @Data
 public class RecipeVo {
-	String R_ID;
-	String R_TYPE;
-	String R_TITLE;
-	String R_CONTENT;
-	String R_IMAGE;
-	Date R_DATE;
+	String r_id;
+	String r_type;
+	String r_title;
+	String r_content;
+	String r_image;
+	Date R_date;
 	
-	String MAT_ID;
-	String MAT_NAME;
-	String MAT_VOL;
-	
-	
-
+	//본 프로젝트에 합칠 때 rId 처럼 바꾸기
 
 }
